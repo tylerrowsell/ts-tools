@@ -1,0 +1,6 @@
+.shopify-tools-full-width{
+    padding-left:0!important;
+}
+#AppFrameMain{
+    transition: padding-left 1s;
+}

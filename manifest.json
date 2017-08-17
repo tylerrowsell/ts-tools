@@ -1,0 +1,59 @@
+{
+  "name": "Email Notifications Editor",
+  "version": "0.0.4",
+  "manifest_version": 2,
+  "description": "Changes Email Notification editor to a better editor.",
+  "homepage_url": "http://support.shopify.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["/src/bg/background.js"]
+  },
+  "permissions": [
+    "tabs",
+    "https://*.myshopify.com/admin/email_templates/*",
+    "https://*.myshopify.com/admin/themes/*"
+  ],
+  "web_accessible_resources": ["js/ace/*"],
+  "commands": {
+    "hide-header": {
+      "suggested_key": {
+        "default": "MacCtrl+Period"
+      },
+      "description": "Hide Header"
+    },
+    "hide-sidebar": {
+      "suggested_key": {
+        "default": "MacCtrl+Comma"
+      },
+      "description": "Hide Sidebar"
+    }
+  },
+  "content_scripts": [{
+      "matches": [
+        "https://*.myshopify.com/admin/*"
+      ],
+      "js": [
+        "js/jquery/jquery.min.js",
+        "js/ace/ace.js",
+        "js/ace/mode-liquid.js",
+        "js/ace/theme-textmate.js",
+        "src/inject/inject.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://*.myshopify.com/admin/themes/*"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ]
+
+
+    }
+  ]
+}
